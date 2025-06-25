@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO e Performance: Título otimizado, meta description e preconnect -->
+    <title>PHARCAL | Controle Financeiro Pessoal Simples e Poderoso</title>
+    <meta name="description" content="Revolucione sua gestão financeira com o PHARCAL. Ferramentas inteligentes para economizar, investir e alcançar a liberdade financeira. Comece grátis!">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💹</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* New Green Color Palette */
+            --primary: #37c28d;
+            --primary-light: #6de2a8;
+            --primary-dark: #2a9a70;
+            --secondary: #0d9488; /* Teal as secondary */
+            --secondary-light: #2dd4bf;
+            --accent: #facc15; /* Gold/Yellow accent */
+            --text: #f5f6fa;
+            --text-secondary: #b2bec3;
+            --bg: #0f172a;
+            --bg-light: #1e293b;
+            --bg-lighter: #334155;
+            --bg-card: #1e293b;
+            --success: #22c55e;
+            --warning: #fdcb6e;
+            --error: #d63031;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.3);
+            --border-radius: 16px; 
+        }
+
+        /* UX: Melhoria de rolagem suave com CSS */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+        h2 { font-size: clamp(2rem, 4vw, 3rem); }
+        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+        p { color: var(--text-secondary); }
+
+        .text-primary { color: var(--primary); }
+        .text-secondary { color: var(--secondary); }
+        .text-accent { color: var(--accent); }
+        .text-success { color: var(--success); }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* UI: Refinamento de subtítulo */
+        .section-header .subtitle {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+            position: relative;
+            padding-left: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+        }
+
+        .section-header .subtitle::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.5rem;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .solutions-header {
+            text-align: left;
+            margin-bottom: 4rem;
+            max-width: 1200px;
+            margin-left: 0;
+            margin-right: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .solutions-header h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--text);
+            line-height: 1.1;
+            flex-shrink: 0;
+        }
+
+        .solutions-header p {
+            max-width: 400px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.5;
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            white-space: nowrap;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(55, 194, 141, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(55, 194, 141, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text);
+            border: 2px solid var(--bg-lighter);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-light);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--bg);
+        }
+
+        .btn-accent:hover {
+            background-color: #fde047;
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(55, 194, 141, 0.3);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 10rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            gap: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(55, 194, 141, 0.15) 0%, rgba(55, 194, 141, 0) 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-title {
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text {
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            position: relative;
+        }
+        
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            width: 80%;
+            height: 70%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -40%);
+            background: radial-gradient(circle, rgba(55, 194, 141, 0.25) 0%, rgba(15, 23, 42, 0) 65%);
+            filter: blur(20px);
+        }
+
+        .dashboard-img {
+            width: 100%; 
+            max-width: 600px; 
+            height: auto; 
+            mix-blend-mode: darken;
+        }
+        
+        .clients{background-color:var(--bg-light);padding:3rem 0}.clients-inner{display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;gap:2rem}.client-item{display:flex;align-items:center;gap:.75rem;color:var(--text-secondary);font-size:1.1rem;font-weight:600;transition:var(--transition);opacity:.8;white-space:nowrap}.client-item:hover{color:var(--text);transform:scale(1.05);opacity:1}.client-item .client-icon{font-size:1.5rem;color:var(--primary);min-width:1.5em;text-align:center}.features{background-color:var(--bg);position:relative}.features::before{content:'';position:absolute;bottom:0;left:0;width:100%;height:100px;background:linear-gradient(to top,var(--bg),transparent);z-index:1}.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;position:relative;z-index:2}.feature-card{background-color:var(--bg-card);border-radius:var(--border-radius);padding:2rem;transition:var(--transition);border:1px solid rgba(255,255,255,.05);opacity:0;transform:translateY(20px)}.feature-card.animated{opacity:1;transform:translateY(0)}.feature-card:hover{transform:translateY(-10px) !important;box-shadow:var(--shadow-hover);border-color:var(--primary)}.feature-icon{font-size:2.5rem;margin-bottom:1.5rem;color:var(--primary);background-color:rgba(55,194,141,.1);width:70px;height:70px;display:flex;align-items:center;justify-content:center;border-radius:50%}.feature-card h3{margin-bottom:1rem}.solutions-section{background-color:var(--bg)}.solutions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}.solution-card{background-color:var(--bg-card);border-radius:var(--border-radius);padding:2.5rem;transition:var(--transition);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;justify-content:space-between;opacity:0;transform:translateY(20px)}.solution-card.animated{opacity:1;transform:translateY(0)}.solution-card:hover{transform:translateY(-10px) !important;box-shadow:var(--shadow-hover);border-color:var(--primary)}.solution-card-header{display:flex;flex-direction:column;align-items:flex-start;margin-bottom:1.5rem}.solution-card .icon-wrapper{width:50px;height:50px;border-radius:50%;background-color:rgba(55,194,141,.15);display:flex;justify-content:center;align-items:center;margin-bottom:1rem}.solution-card .icon-wrapper i{font-size:1.8rem;color:var(--primary)}.solution-card h3{color:var(--text);font-size:1.7rem;margin-bottom:.75rem}.solution-card p{font-size:1rem;color:var(--text-secondary);margin-bottom:1.5rem;flex-grow:1}.solution-card .saiba-mais{color:var(--primary);text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:.5rem;transition:var(--transition);margin-top:1rem}.solution-card .saiba-mais:hover{color:var(--primary-light);transform:translateX(5px)}.card-illustration{background-color:var(--bg-light);border-radius:var(--border-radius);padding:1rem;margin-top:2rem;box-shadow:inset 0 0 5px rgba(0,0,0,.1);position:relative;overflow:hidden;height:120px;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;mask-image:linear-gradient(to bottom,black 0%,black 85%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,black 0%,black 85%,transparent 100%)}.illustration-graph{height:100%;width:100%;display:flex;flex-direction:column;justify-content:space-between;align-items:stretch;position:relative;padding:.5rem}.illustration-graph .labels{display:flex;justify-content:space-between;width:100%;font-size:.75rem;color:var(--text-secondary);margin-bottom:.5rem}.illustration-graph .bar-chart{display:flex;align-items:flex-end;gap:.4rem;height:70%;position:relative;z-index:1}.illustration-graph .bar{width:18%;background-color:var(--primary);border-radius:2px;opacity:.7;transition:height .5s ease;transform:scaleY(0);transform-origin:bottom;animation:growBar 1s forwards}.illustration-graph .bar:nth-child(1){height:60%;animation-delay:.1s}.illustration-graph .bar:nth-child(2){height:80%;animation-delay:.2s}.illustration-graph .bar:nth-child(3){height:50%;animation-delay:.3s}.illustration-graph .bar:nth-child(4){height:90%;animation-delay:.4s}.illustration-graph .bar:nth-child(5){height:70%;animation-delay:.5s}@keyframes growBar{to{transform:scaleY(1)}}.illustration-graph .overlay-card{background-color:var(--bg-lighter);border-radius:8px;padding:.7rem 1rem;box-shadow:0 5px 15px rgba(0,0,0,.2);position:absolute;top:20px;right:10px;display:flex;flex-direction:column;align-items:flex-start;font-size:.9rem;color:var(--text);animation:fadeInScale .8s forwards;animation-delay:.6s;transform:scale(.8);opacity:0;min-width:120px}.illustration-graph .overlay-card .title{color:var(--text-secondary);font-size:.7rem;margin-bottom:.2rem}.illustration-graph .overlay-card .value{font-weight:700;color:var(--primary-light);font-size:1.1rem;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}.illustration-graph .overlay-card .value i{color:var(--primary-light);font-size:.9rem}.illustration-graph .overlay-card .details{font-size:.65rem;color:var(--text-secondary);text-align:right;width:100%}@keyframes fadeInScale{to{opacity:1;transform:scale(1)}}.illustration-toggles{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:1rem;gap:1rem}.toggle-item{display:flex;align-items:center;justify-content:space-between;width:100%}.toggle-item .label{display:flex;align-items:center;gap:.7rem;color:var(--text);font-weight:500;font-size:.9rem}.toggle-item .label i{color:var(--primary);font-size:1.2rem}.toggle-switch-small{position:relative;display:inline-block;width:38px;height:20px}.toggle-switch-small input{opacity:0;width:0;height:0}.toggle-slider-round{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:var(--bg-lighter);transition:.4s;border-radius:34px}.toggle-slider-round:before{position:absolute;content:"";height:14px;width:14px;left:3px;bottom:3px;background-color:white;transition:.4s;border-radius:50%}.toggle-switch-small input:checked+.toggle-slider-round{background-color:var(--primary)}.toggle-switch-small input:checked+.toggle-slider-round:before{transform:translateX(18px)}.illustration-pix{height:100%;width:100%;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;padding:1rem}.illustration-pix .balance-info{color:var(--text-secondary);font-size:.8rem;width:100%}.illustration-pix .balance-value{font-size:1.8rem;font-weight:700;color:var(--text);margin-top:.2rem;margin-bottom:1rem}.illustration-pix .qr-button-wrapper{width:100%;display:flex;justify-content:flex-end}.illustration-pix .qr-button{background-color:var(--bg-lighter);border-radius:8px;padding:.8rem 1rem;display:flex;align-items:center;gap:.7rem;color:var(--text);font-weight:600;font-size:.9rem;box-shadow:0 2px 8px rgba(0,0,0,.1)}.illustration-pix .qr-button i{color:var(--primary);font-size:1.2rem}.dashboard-preview{position:relative;overflow:hidden}.dashboard-preview::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 70% 50%,rgba(55,194,141,.1) 0%,transparent 50%);z-index:-1}.dashboard-slider{margin-top:3rem;border-radius:var(--border-radius);overflow:hidden;box-shadow:var(--shadow);position:relative;height:400px;display:flex;justify-content:center;align-items:center}.slider-container{display:flex;width:300%;height:100%;transition:transform .5s ease;position:absolute;left:0;top:0}.slider-slide{width:33.33%;height:100%;display:flex;align-items:center;justify-content:center;background-color:var(--bg-light)}.slider-slide img{max-width:100%;max-height:100%;object-fit:contain;border-radius:var(--border-radius)}.slider-nav{display:flex;justify-content:center;gap:1rem;margin-top:2rem}.slider-dot{width:12px;height:12px;border-radius:50%;background-color:var(--bg-lighter);cursor:pointer;transition:var(--transition)}.slider-dot.active{background-color:var(--primary);transform:scale(1.2)}.pricing{background-color:var(--bg-light)}.pricing-toggle{display:flex;justify-content:center;align-items:center;gap:1rem;margin-bottom:3rem}.toggle-label{color:var(--text-secondary);font-weight:500}.toggle-switch{position:relative;display:inline-block;width:60px;height:30px}.toggle-switch input{opacity:0;width:0;height:0}.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background-color:var(--bg-lighter);transition:var(--transition);border-radius:34px}.toggle-slider:before{position:absolute;content:'';height:22px;width:22px;left:4px;bottom:4px;background-color:white;transition:var(--transition);border-radius:50%}input:checked+.toggle-slider{background-color:var(--primary)}input:checked+.toggle-slider:before{transform:translateX(30px)}.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}.pricing-card{background-color:var(--bg-card);border-radius:var(--border-radius);padding:2.5rem 2rem;transition:var(--transition);border:1px solid rgba(255,255,255,.05);position:relative;overflow:hidden;opacity:0;transform:translateY(20px)}.pricing-card.animated{opacity:1;transform:translateY(0)}.pricing-card:hover{transform:translateY(-10px) !important;box-shadow:var(--shadow-hover);border-color:var(--primary)}.pricing-card.popular{border-color:var(--primary)}.popular-badge{position:absolute;top:0;right:2rem;background-color:var(--primary);color:white;padding:.25rem 1rem;border-bottom-left-radius:5px;border-bottom-right-radius:5px;font-size:.8rem;font-weight:600}.pricing-card h3{margin-bottom:1rem}.price{font-size:2.5rem;font-weight:700;margin:1.5rem 0;color:var(--text)}.price span{font-size:1rem;color:var(--text-secondary);font-weight:400}.pricing-features{list-style:none;margin-bottom:2rem}.pricing-features li{margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}.pricing-features i{color:var(--success)}.testimonials{position:relative}.testimonials::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="%231e293b" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');background-size:100% 100%;z-index:-1}.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}.testimonial-card{background-color:var(--bg-card);border-radius:var(--border-radius);padding:2rem;transition:var(--transition);border:1px solid rgba(255,255,255,.05);opacity:0;transform:translateY(20px)}.testimonial-card.animated{opacity:1;transform:translateY(0)}.testimonial-card:hover{transform:translateY(-10px) !important;box-shadow:var(--shadow-hover);border-color:var(--primary)}.testimonial-text{font-style:italic;margin-bottom:1.5rem;line-height:1.6;position:relative}.testimonial-text::before{content:'"';font-size:4rem;color:var(--primary-light);position:absolute;top:-20px;left:-15px;opacity:.2;font-family:serif;line-height:1}.testimonial-author{display:flex;align-items:center;gap:1rem}.author-avatar{width:50px;height:50px;border-radius:50%;object-fit:cover}.author-info h4{margin-bottom:.2rem}.author-info p{color:var(--text-secondary);font-size:.9rem}.rating{color:var(--warning);margin-top:.3rem}.faq{background-color:var(--bg-light)}.faq-grid{display:grid;grid-template-columns:1fr;gap:1rem;max-width:800px;margin:0 auto}.faq-item{background-color:var(--bg-card);border-radius:var(--border-radius);overflow:hidden;transition:var(--transition);border:1px solid rgba(255,255,255,.05)}.faq-question{padding:1.5rem;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;transition:var(--transition)}.faq-question:hover{color:var(--primary)}.faq-question i{transition:var(--transition)}.faq-item.active .faq-question i{transform:rotate(180deg)}.faq-answer{padding:0 1.5rem;max-height:0;overflow:hidden;transition:var(--transition)}.faq-item.active .faq-answer{padding-bottom:1.5rem;max-height:300px}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;text-align:center}.stat-item{padding:2rem;background-color:var(--bg-card);border-radius:var(--border-radius);transition:var(--transition);border:1px solid rgba(255,255,255,.05);opacity:0;transform:translateY(20px)}.stat-item.animated{opacity:1;transform:translateY(0)}.stat-item:hover{transform:translateY(-5px) !important;box-shadow:var(--shadow);border-color:var(--primary)}.stat-number{font-size:2.5rem;font-weight:700;color:var(--primary);margin-bottom:.5rem}.stat-label{color:var(--text-secondary);font-size:1rem}.cta{text-align:center;background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);position:relative;overflow:hidden}.cta::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Q50,80 0,100 Z"></path></svg>');background-size:100% 100%;z-index:0}.cta-container{position:relative;z-index:1;max-width:700px;margin:0 auto}.cta h2{margin-bottom:1.5rem;color:white}.cta p{color:rgba(255,255,255,.8);margin-bottom:2rem}.cta-form{display:flex;max-width:500px;margin:0 auto;gap:1rem}.cta-form input{flex:1;padding:.8rem 1.5rem;border-radius:50px;border:none;background-color:rgba(255,255,255,.9);color:var(--bg);font-size:1rem;transition:var(--transition)}.cta-form input:focus{outline:none;background-color:white;box-shadow:0 0 0 3px rgba(255,255,255,.3)}.cta-form .btn{box-shadow:none}footer{background-color:var(--bg-light);padding:4rem 0 2rem;position:relative}.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:3rem;margin-bottom:3rem}.footer-col h3{font-size:1.2rem;margin-bottom:1.5rem;position:relative;display:inline-block}.footer-col h3::after{content:'';position:absolute;bottom:-8px;left:0;width:50%;height:3px;background-color:var(--primary)}.footer-col ul{list-style:none}.footer-col li{margin-bottom:.8rem}.footer-col a{color:var(--text-secondary);text-decoration:none;transition:var(--transition)}.footer-col a:hover{color:var(--primary);padding-left:5px}.footer-about p{margin-bottom:1.5rem}.social-links{display:flex;gap:1rem;margin-top:1.5rem}.social-links a{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background-color:var(--bg);color:var(--text);transition:var(--transition)}.social-links a:hover{background-color:var(--primary);transform:translateY(-3px)}.footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid var(--bg-lighter);color:var(--text-secondary);font-size:.9rem}
+
+        .back-to-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            z-index: 999;
+        }
+
+        .back-to-top-btn.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width:1024px){.hero{flex-direction:column;text-align:center;padding-top:8rem}.hero-content{margin-bottom:3rem}.hero-buttons{justify-content:center}.solutions-header{flex-direction:column;text-align:center;margin-left:auto;margin-right:auto}.solutions-header p{text-align:center}}@media (max-width:768px){.nav-links{position:fixed;top:80px;left:0;width:100%;background-color:var(--bg-light);flex-direction:column;align-items:center;padding:2rem;gap:1.5rem;display:none;box-shadow:0 10px 20px rgba(0,0,0,.1)}.nav-links.active{display:flex}.mobile-menu-btn{display:block}.hero-buttons{flex-direction:column;gap:1rem}.step{flex-direction:column;gap:1rem}.cta-form{flex-direction:column}.dashboard-slider{height:300px}.solutions-grid{grid-template-columns:1fr}}@media (max-width:480px){section{padding:4rem 0}.container{padding:0 1.5rem}.pricing-card{padding:1.5rem}.dashboard-slider{height:200px}}
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles-js"></div>
+    
+    <header id="header">
+        <div class="container">
+            <div class="navbar">
+                <a href="#home" class="logo">
+                    <i class="fas fa-chart-line logo-icon"></i>
+                    PHARCAL
+                </a>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#features">Recursos</a></li>
+                        <li><a href="#solutions-section">Soluções</a></li>
+                        <li><a href="#pricing">Planos</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </nav>
+                <button class="btn btn-primary">Começar Agora</button>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero container" id="home">
+        <div class="hero-content animate__animated animate__fadeInLeft">
+            <h1 class="hero-title">Controle financeiro <span class="text-primary">simples</span> e <span class="text-secondary">poderoso</span></h1>
+            <p class="hero-text">O PHARCAL revoluciona a forma como você gerencia seu dinheiro, com ferramentas inteligentes que ajudam a economizar, investir e alcançar liberdade financeira.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Comece Agora
+                </button>
+                <button class="btn btn-secondary">
+                    <i class="fas fa-play-circle"></i> Ver Demonstração
+                </button>
+            </div>
+        </div>
+        <div class="hero-image animate__animated animate__fadeInRight">
+            <img src="img/sapo.png" alt="Mascote PHARCAL, um sapo elegante de cartola e terno roxo, simbolizando riqueza e controle." class="dashboard-img">
+        </div>
+    </section>
+
+    <section class="clients"><div class="container"><div class="clients-inner"><div class="client-item"><i class="fas fa-university client-icon"></i> Banco do Brasil</div><div class="client-item"><i class="fas fa-piggy-bank client-icon"></i> Itaú</div><div class="client-item"><i class="fas fa-handshake client-icon"></i> Bradesco</div><div class="client-item"><i class="fas fa-wallet client-icon"></i> Santander</div><div class="client-item"><i class="fas fa-credit-card client-icon"></i> Nubank</div></div></div></section><section class="features" id="features"><div class="container"><div class="section-header"><span class="subtitle">POR QUE ESCOLHER</span><h2>Recursos que transformam sua vida financeira</h2><p>Descubra como o PHARCAL pode ajudar você a tomar controle total do seu dinheiro com ferramentas poderosas e intuitivas.</p></div><div class="features-grid"><div class="feature-card"><div class="feature-icon"><i class="fas fa-wallet"></i></div><h3>Gestão Completa</h3><p>Centralize todas suas contas, cartões e investimentos em um único lugar com nossa plataforma integrada.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-chart-pie"></i></div><h3>Análises Detalhadas</h3><p>Relatórios personalizados e gráficos interativos para entender exatamente para onde seu dinheiro está indo.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-robot"></i></div><h3>Assistente Inteligente</h3><p>Nosso AI analisa seus hábitos e sugere melhorias para otimizar suas finanças automaticamente.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-bullseye"></i></div><h3>Metas Personalizadas</h3><p>Defina objetivos financeiros e acompanhe seu progresso com alertas e recomendações personalizadas.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Segurança Máxima</h3><p>Seus dados protegidos com criptografia bancária e autenticação de múltiplos fatores.</p></div><div class="feature-card"><div class="feature-icon"><i class="fas fa-sync-alt"></i></div><h3>Atualizações em Tempo Real</h3><p>Sincronização automática com seus bancos e cartões para informações sempre atualizadas.</p></div></div></div></section><section class="solutions-section" id="solutions-section"><div class="container"><div class="solutions-header"><h2>Soluções financeiras<br>para cada etapa</h2><p>O PHARCAL é o sistema que cuida da gestão financeira do seu negócio de ponta a ponta. Conheça as soluções para simplificar sua jornada de gestão.</p></div><div class="solutions-grid"><div class="solution-card"><div class="solution-card-header"><div class="icon-wrapper"><i class="fas fa-dollar-sign"></i></div><h3>Controle Financeiro</h3><p>Centralize suas contas, automatize o fluxo de caixa e acompanhe lucros com transparência. Tenha relatórios detalhados e mantenha a saúde financeira do seu negócio em dia.</p></div><div class="card-illustration illustration-graph"><div class="labels"><span>Entradas</span><span>Saídas</span></div><div class="bar-chart"><div class="bar" style="height: 60%;"></div><div class="bar" style="height: 80%;"></div><div class="bar" style="height: 50%;"></div><div class="bar" style="height: 90%;"></div><div class="bar" style="height: 70%;"></div></div><div class="overlay-card"><span class="title">Receitas</span><span class="value"><i class="fas fa-arrow-down"></i> R$ 30.000,00</span><span class="details">31 contas   <a href="#" style="color: var(--primary-light); text-decoration: none;">Ver</a></span></div></div><a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a></div><div class="solution-card"><div class="solution-card-header"><div class="icon-wrapper"><i class="fas fa-credit-card"></i></div><h3>Meios de pagamentos</h3><p>Simplifique sua gestão financeira e não perca tempo com conciliações: receba e pague com Pix, boletos, links de pagamento ou conecte sua maquininha POS, tudo 100% integrado ao ERP.</p></div><div class="card-illustration illustration-toggles"><div class="toggle-item"><span class="label"><i class="fas fa-credit-card"></i> Cartão de crédito</span><label class="toggle-switch-small"><input type="checkbox" checked><span class="toggle-slider-round"></span></label></div><div class="toggle-item"><span class="label"><i class="fas fa-barcode"></i> Boleto</span><label class="toggle-switch-small"><input type="checkbox"><span class="toggle-slider-round"></span></label></div><div class="toggle-item"><span class="label"><i class="fas fa-qrcode"></i> Pix</span><label class="toggle-switch-small"><input type="checkbox" checked><span class="toggle-slider-round"></span></label></div></div><a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a></div><div class="solution-card"><div class="solution-card-header"><div class="icon-wrapper"><i class="fas fa-tablet-alt"></i></div><h3>Conta Digital e serviços financeiros</h3><p>Automatize sua rotina financeira com uma conta PJ gratuita e integrada. Receba, pague, acesse crédito e conte com o suporte de um especialista financeiro para impulsionar o crescimento do seu negócio.</p></div><div class="card-illustration illustration-pix"><div class="balance-info">Saldo</div><div class="balance-value">R$ 124.735.000,30</div><div class="qr-button-wrapper"><div class="qr-button"><i class="fas fa-qrcode"></i> Pagar Pix</div></div></div><a href="#" class="saiba-mais">Saiba mais <i class="fas fa-arrow-right"></i></a></div></div></div></section><section class="dashboard-preview"><div class="container"><div class="section-header"><span class="subtitle">VISÃO GERAL</span><h2>Dashboard inteligente e personalizável</h2><p>Visualize todas suas informações financeiras em um painel bonito e intuitivo, adaptado às suas necessidades.</p></div><div class="dashboard-slider"><div class="slider-container" id="slider-container"><div class="slider-slide"><img src="img/sapao.png" alt="Visão geral do dashboard PHARCAL" loading="lazy"></div><div class="slider-slide"><img src="img/sasasasa.png" alt="Relatórios financeiros detalhados" loading="lazy"></div><div class="slider-slide"><img src="img/deash.png" alt="Acompanhamento de metas financeiras" loading="lazy"></div></div></div><div class="slider-nav"><div class="slider-dot active" data-slide="0"></div><div class="slider-dot" data-slide="1"></div><div class="slider-dot" data-slide="2"></div></div></div></section><section class="stats"><div class="container"><div class="stats"><div class="stat-item"><div class="stat-number" data-count="55000" data-format="users">0</div><div class="stat-label">Usuários Ativos</div></div><div class="stat-item"><div class="stat-number" data-count="1500000000" data-format="currency">0</div><div class="stat-label">Dinheiro Gerenciado</div></div><div class="stat-item"><div class="stat-number" data-count="4.9" data-format="rating">0</div><div class="stat-label">Avaliação Média</div></div><div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Suporte Dedicado</div></div></div></div></section><section class="pricing" id="pricing"><div class="container"><div class="section-header"><span class="subtitle">PLANOS Acessíveis</span><h2>Escolha o plano perfeito para você</h2><p>Oferecemos opções flexíveis para atender desde usuários individuais até grandes famílias.</p></div><div class="pricing-toggle"><span class="toggle-label">Mensal</span><label class="toggle-switch"><input type="checkbox" id="pricing-toggle"><span class="toggle-slider"></span></label><span class="toggle-label">Anual <span class="text-success">(20% off)</span></span></div><div class="pricing-grid"><div class="pricing-card"><h3>Básico</h3><div class="price" data-monthly="R$19" data-annual="R$182">R$19<span>/mês</span></div><ul class="pricing-features"><li><i class="fas fa-check"></i> Até 3 contas bancárias</li><li><i class="fas fa-check"></i> 5 categorias personalizadas</li><li><i class="fas fa-check"></i> Relatórios mensais</li><li><i class="fas fa-check"></i> Suporte por e-mail</li><li><i class="fas fa-check"></i> Atualizações semanais</li></ul><button class="btn btn-secondary" style="width: 100%;">Começar</button></div><div class="pricing-card popular"><div class="popular-badge">Popular</div><h3>Profissional</h3><div class="price" data-monthly="R$39" data-annual="R$374">R$39<span>/mês</span></div><ul class="pricing-features"><li><i class="fas fa-check"></i> Contas bancárias ilimitadas</li><li><i class="fas fa-check"></i> Categorias ilimitadas</li><li><i class="fas fa-check"></i> Relatórios detalhados</li><li><i class="fas fa-check"></i> Assistente financeiro AI</li><li><i class="fas fa-check"></i> Suporte prioritário</li><li><i class="fas fa-check"></i> Metas e orçamentos</li></ul><button class="btn btn-primary" style="width: 100%;">Experimente Grátis</button></div><div class="pricing-card"><h3>Família</h3><div class="price" data-monthly="R$69" data-annual="R$662">R$69<span>/mês</span></div><ul class="pricing-features"><li><i class="fas fa-check"></i> Tudo no Profissional</li><li><i class="fas fa-check"></i> Até 5 membros da família</li><li><i class="fas fa-check"></i> Controle parental</li><li><i class="fas fa-check"></i> Relatórios familiares</li><li><i class="fas fa-check"></i> Planejamento conjunto</li><li><i class="fas fa-check"></i> Consultoria especializada</li></ul><button class="btn btn-secondary" style="width: 100%;">Começar</button></div></div></div></section><section class="testimonials" id="testimonials"><div class="container"><div class="section-header"><span class="subtitle">DEPOIMENTOS</span><h2>O que nossos clientes dizem</h2><p>Veja como o PHARCAL está transformando vidas financeiras todos os dias.</p></div><div class="testimonials-grid"><div class="testimonial-card"><div class="testimonial-text">O PHARCAL mudou completamente minha relação com o dinheiro. Em 6 meses consegui quitar minhas dívidas e começar a investir. A interface é incrivelmente intuitiva!</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Foto de perfil de Ana Silva" class="author-avatar" loading="lazy"><div class="author-info"><h4>Ana Silva</h4><p>Designer, 28 anos</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div><div class="testimonial-card"><div class="testimonial-text">Como empreendedor, ter controle sobre meu fluxo de caixa era um desafio. Com o PHARCAL consigo acompanhar tudo em tempo real e tomar decisões mais assertivas para meu negócio.</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Foto de perfil de Carlos Mendes" class="author-avatar" loading="lazy"><div class="author-info"><h4>Carlos Mendes</h4><p>Empresário, 42 anos</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div></div></div></div><div class="testimonial-card"><div class="testimonial-text">Finalmente encontrei um app que realmente me ajuda a economizar! Os alertas e metas personalizadas fazem toda diferença. Recomendo para todos meus amigos e familiares.</div><div class="testimonial-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Foto de perfil de Juliana Costa" class="author-avatar" loading="lazy"><div class="author-info"><h4>Juliana Costa</h4><p>Professora, 35 anos</p><div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div></div></div></div></div></div></section><section class="faq" id="faq"><div class="container"><div class="section-header"><span class="subtitle">AJUDA</span><h2>Perguntas frequentes</h2><p>Tire suas dúvidas sobre o PHARCAL e como ele pode ajudar você.</p></div><div class="faq-grid"><div class="faq-item"><div class="faq-question"><span>O PHARCAL é seguro para conectar minhas contas bancárias?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Absolutamente! Utilizamos criptografia bancária de nível militar e não armazenamos suas credenciais de acesso. Todas as conexões são feitas através de APIs seguras fornecidas pelos próprios bancos.</p></div></div><div class="faq-item"><div class="faq-question"><span>Posso usar o PHARCAL em mais de um dispositivo?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Sim, seu perfil pode ser acessado em quantos dispositivos você quiser, incluindo smartphones, tablets e computadores. Todas as informações são sincronizadas em tempo real.</p></div></div><div class="faq-item"><div class="faq-question"><span>Existe um período de teste gratuito?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Oferecemos 14 dias gratuitos para você testar todos os recursos do plano Profissional sem compromisso. Não é necessário informar dados de cartão de crédito para iniciar o teste.</p></div></div><div class="faq-item"><div class="faq-question"><span>Quais bancos são compatíveis com o PHARCAL?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Trabalhamos com todos os principais bancos do Brasil e continuamos expandindo nossa lista de instituições parceiras. Caso seu banco não esteja listado, você pode adicionar transações manualmente.</p></div></div><div class="faq-item"><div class="faq-question"><span>Como cancelo minha assinatura?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Você pode cancelar a qualquer momento através da seção de Configurações da sua conta. Seu acesso permanecerá ativo até o final do período já pago, sem cobranças adicionais.</p></div></div></div></div></section><section class="cta" id="cta"><div class="container"><div class="cta-container"><h2>Pronto para transformar suas finanças?</h2><p>Junte-se a mais de 50 mil usuários que estão no controle de seu dinheiro. Experimente gratuitamente por 14 dias.</p><form class="cta-form"><input type="email" placeholder="Digite seu melhor e-mail" required><button type="submit" class="btn btn-accent">Começar Agora</button></form></div></div></section>
+    <footer><div class="container"><div class="footer-grid"><div class="footer-col footer-about"><a href="#home" class="logo"><i class="fas fa-chart-line logo-icon"></i> PHARCAL</a><p>A solução completa para gestão financeira pessoal e empresarial. Tome o controle do seu dinheiro e alcance sua liberdade financeira.</p><div class="social-links"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div><div class="footer-col"><h3>Produto</h3><ul><li><a href="#features">Recursos</a></li><li><a href="#pricing">Planos</a></li><li><a href="#solutions-section">Integrações</a></li><li><a href="#">Atualizações</a></li><li><a href="#faq">FAQ</a></li></ul></div><div class="footer-col"><h3>Empresa</h3><ul><li><a href="#">Sobre Nós</a></li><li><a href="#">Carreiras</a></li><li><a href="#">Blog</a></li><li><a href="#">Parceiros</a></li><li><a href="#">Imprensa</a></li></ul></div><div class="footer-col"><h3>Suporte</h3><ul><li><a href="#">Central de Ajuda</a></li><li><a href="#">Tutoriais</a></li><li><a href="#">Comunidade</a></li><li><a href="#">Contato</a></li><li><a href="#">Status</a></li></ul></div><div class="footer-col"><h3>Legal</h3><ul><li><a href="#">Termos de Serviço</a></li><li><a href="#">Política de Privacidade</a></li><li><a href="#">Cookies</a></li><li><a href="#">Segurança</a></li><li><a href="#">GDPR</a></li></ul></div></div><div class="footer-bottom"><p>© 2023 PHARCAL. Todos os direitos reservados.</p></div></div></footer>
+
+    <a href="#home" id="back-to-top" class="back-to-top-btn" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+
+        // FAQ accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const animateElements = (elements, className) => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add(className);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            elements.forEach(element => observer.observe(element));
+        };
+        
+        animateElements(document.querySelectorAll('.feature-card, .solution-card, .pricing-card, .testimonial-card, .stat-item'), 'animated');
+
+        // --- INÍCIO DA LÓGICA DO SLIDER CORRIGIDA ---
+        const sliderContainer = document.getElementById('slider-container');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        let sliderInterval;
+
+        function updateSlider(index) {
+            if (sliderContainer) {
+                // A largura de cada slide é 100% / número de slides.
+                // O deslocamento é o índice do slide * essa largura.
+                const offset = index * (100 / sliderDots.length);
+                sliderContainer.style.transform = `translateX(-${offset}%)`;
+            }
+            
+            sliderDots.forEach(dot => dot.classList.remove('active'));
+            if (sliderDots[index]) {
+                sliderDots[index].classList.add('active');
+            }
+            currentSlide = index;
+        }
+
+        function startSliderInterval() {
+            // Limpa qualquer intervalo anterior para evitar múltiplos timers
+            clearInterval(sliderInterval);
+            sliderInterval = setInterval(() => {
+                const nextSlide = (currentSlide + 1) % sliderDots.length;
+                updateSlider(nextSlide);
+            }, 5000); // Muda a cada 5 segundos
+        }
+
+        // Event listeners para os pontos de navegação
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                updateSlider(index);
+                startSliderInterval(); // Reinicia o timer quando o usuário clica
+            });
+        });
+        
+        // Inicia o slider se os elementos existirem
+        if (sliderContainer && sliderDots.length > 0) {
+            startSliderInterval();
+        }
+        // --- FIM DA LÓGICA DO SLIDER CORRIGIDA ---
+
+        // Counter animation for stats
+        function animateCounters() {
+            const statNumbersToAnimate = document.querySelectorAll('.stat-number[data-count]'); 
+            statNumbersToAnimate.forEach(stat => {
+                const target = parseFloat(stat.getAttribute('data-count'));
+                const format = stat.getAttribute('data-format');
+                const duration = 2000;
+                const startTime = performance.now();
+                if (isNaN(target)) return; 
+
+                function updateNumber(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    let value = progress * target;
+                    let displayedText = '';
+                    switch (format) {
+                        case 'users': displayedText = `${Math.floor(value).toLocaleString('pt-BR')}+`; break;
+                        case 'currency': displayedText = `R$ ${(value / 1000000000).toFixed(1).replace('.', ',')} Bi`; break;
+                        case 'rating': displayedText = value.toFixed(1).replace('.', ','); break;
+                        default: displayedText = Math.floor(value).toLocaleString('pt-BR');
+                    }
+                    stat.textContent = displayedText;
+                    if (progress < 1) requestAnimationFrame(updateNumber);
+                }
+                requestAnimationFrame(updateNumber);
+            });
+        }
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, { threshold: 0.5 }).observe(statsSection);
+        }
+
+        // Pricing toggle functionality
+        const pricingToggle = document.getElementById('pricing-toggle');
+        const priceElements = document.querySelectorAll('.price');
+        if(pricingToggle) {
+            pricingToggle.addEventListener('change', function() {
+                priceElements.forEach(price => {
+                    const monthly = price.getAttribute('data-monthly');
+                    const annual = price.getAttribute('data-annual');
+                    price.innerHTML = this.checked ? `${annual}<span>/ano</span>` : `${monthly}<span>/mês</span>`;
+                });
+            });
+        }
+        
+        // Back to Top button
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-js');
+            if (!particlesContainer) return;
+            const particleCount = 30; 
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 4 + 2;
+                particle.style.cssText = `
+                    width: ${size}px; height: ${size}px;
+                    left: ${Math.random() * 100}%; top: ${Math.random() * 100}%;
+                    opacity: ${Math.random() * 0.5 + 0.1};
+                    animation: float ${Math.random() * 20 + 10}s ease-in-out ${Math.random() * 5}s infinite;
+                `;
+                particlesContainer.appendChild(particle);
+            }
+        }
+        createParticles();
+
+        // Form submission
+        const ctaForm = document.querySelector('.cta-form');
+        if (ctaForm) {
+            ctaForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                const emailInput = this.querySelector('input');
+                alert(`Obrigado por se interessar! Em breve entraremos em contato no email: ${emailInput.value}`);
+                emailInput.value = ''; 
+            });
+        }
+    </script>
+</body>
+</html>
